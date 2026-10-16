@@ -1,0 +1,49 @@
+{
+  "name": "@pigeons/sdk",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for Pigeons email infrastructure",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [
+    "email",
+    "sdk",
+    "pigeons",
+    "ses",
+    "transactional",
+    "agent",
+    "ai",
+    "mcp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pigeons-dev/pigeons-sdks.git",
+    "directory": "packages/typescript"
+  },
+  "homepage": "https://pigeons.dev"
+}
