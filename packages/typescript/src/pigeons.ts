@@ -6,6 +6,8 @@ import { TemplatesResource } from './resources/templates.js'
 import { ContactsResource } from './resources/contacts.js'
 import { InboxesResource } from './resources/inboxes.js'
 import { WebhooksResource } from './resources/webhooks.js'
+import { CampaignsResource } from './resources/campaigns.js'
+import { SequencesResource } from './resources/sequences.js'
 
 export interface PigeonsConfig {
   baseUrl: string
@@ -22,6 +24,8 @@ export class Pigeons {
   public readonly contacts: ContactsResource
   public readonly inboxes: InboxesResource
   public readonly webhooks: WebhooksResource
+  public readonly campaigns: CampaignsResource
+  public readonly sequences: SequencesResource
 
   constructor(config?: Partial<PigeonsConfig>) {
     const baseUrl = config?.baseUrl ?? process.env.PIGEONS_URL
@@ -48,5 +52,7 @@ export class Pigeons {
     this.contacts = new ContactsResource(this.http)
     this.inboxes = new InboxesResource(this.http)
     this.webhooks = new WebhooksResource(this.http)
+    this.campaigns = new CampaignsResource(this.http)
+    this.sequences = new SequencesResource(this.http)
   }
 }

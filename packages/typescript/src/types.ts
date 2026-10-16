@@ -299,6 +299,122 @@ export interface ListWebhooksParams {
   limit?: number
 }
 
+export interface Campaign {
+  id: string
+  name: string
+  subject?: string
+  templateId?: string
+  templateData?: Record<string, unknown>
+  fromName?: string
+  fromEmail?: string
+  audienceFilter?: Record<string, unknown>
+  status: 'draft' | 'scheduled' | 'sending' | 'paused' | 'sent' | 'cancelled'
+  scheduledAt?: string
+  startedAt?: string
+  completedAt?: string
+  stats: { total: number; sent: number; delivered: number; bounced: number; complained: number; failed: number }
+  createdAt: string
+  updatedAt: string
+}
+
+export interface CreateCampaignParams {
+  name: string
+  subject?: string
+  templateId?: string
+  templateData?: Record<string, unknown>
+  fromName?: string
+  fromEmail?: string
+  audienceFilter?: Record<string, unknown>
+  scheduledAt?: string
+}
+
+export interface UpdateCampaignParams {
+  name?: string
+  subject?: string
+  templateId?: string
+  templateData?: Record<string, unknown>
+  fromName?: string
+  fromEmail?: string
+  audienceFilter?: Record<string, unknown>
+  scheduledAt?: string
+}
+
+export interface ListCampaignsParams {
+  cursor?: string
+  limit?: number
+  status?: Campaign['status']
+}
+
+export interface Sequence {
+  id: string
+  name: string
+  trigger?: { event: string; filter?: Record<string, unknown> }
+  status: 'draft' | 'active' | 'paused' | 'archived'
+  stats: { enrolled: number; completed: number; exited: number; active: number }
+  steps?: SequenceStep[]
+  createdAt: string
+  updatedAt: string
+}
+
+export interface SequenceStep {
+  id: string
+  sequenceId: string
+  position: number
+  type: 'email' | 'delay' | 'condition'
+  templateId?: string
+  templateData?: Record<string, unknown>
+  subject?: string
+  delayDuration?: string
+  condition?: Record<string, unknown>
+  stats: { sent: number; delivered: number; bounced: number; complained: number }
+  createdAt: string
+  updatedAt: string
+}
+
+export interface CreateSequenceParams {
+  name: string
+  trigger?: { event: string; filter?: Record<string, unknown> }
+  steps?: Array<{
+    type: 'email' | 'delay' | 'condition'
+    templateId?: string
+    templateData?: Record<string, unknown>
+    subject?: string
+    delayDuration?: string
+    condition?: Record<string, unknown>
+  }>
+}
+
+export interface UpdateSequenceParams {
+  name?: string
+  trigger?: { event: string; filter?: Record<string, unknown> }
+  steps?: Array<{
+    type: 'email' | 'delay' | 'condition'
+    templateId?: string
+    templateData?: Record<string, unknown>
+    subject?: string
+    delayDuration?: string
+    condition?: Record<string, unknown>
+  }>
+}
+
+export interface ListSequencesParams {
+  cursor?: string
+  limit?: number
+  status?: Sequence['status']
+}
+
+export interface SequenceEnrollment {
+  id: string
+  sequenceId: string
+  contactId: string
+  currentStepId?: string
+  status: 'active' | 'completed' | 'exited' | 'failed'
+  enrolledAt: string
+  completedAt?: string
+  createdAt: string
+  updatedAt: string
+}
+
 export interface PaginatedResponse<T> {
   data: T[]
   has_more: boolean

@@ -7,6 +7,8 @@ export { TemplatesResource } from './resources/templates.js'
 export { ContactsResource } from './resources/contacts.js'
 export { InboxesResource, InboxMessagesResource, InboxThreadsResource } from './resources/inboxes.js'
 export { WebhooksResource } from './resources/webhooks.js'
+export { CampaignsResource } from './resources/campaigns.js'
+export { SequencesResource } from './resources/sequences.js'
 export type {
   Email,
   SendEmailParams,
@@ -42,5 +44,15 @@ export type {
   UpdateWebhookParams,
   ListWebhooksParams,
   PaginatedResponse,
+  Campaign,
+  CreateCampaignParams,
+  UpdateCampaignParams,
+  ListCampaignsParams,
+  Sequence,
+  SequenceStep,
+  CreateSequenceParams,
+  UpdateSequenceParams,
+  ListSequencesParams,
+  SequenceEnrollment,
 } from './types.js'
 export { PigeonsError, ValidationError, AuthError, NotFoundError, RateLimitError } from './errors.js'
