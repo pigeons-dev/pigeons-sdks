@@ -4,6 +4,8 @@ import { DomainsResource } from './resources/domains.js'
 import { ApiKeysResource } from './resources/api-keys.js'
 import { TemplatesResource } from './resources/templates.js'
 import { ContactsResource } from './resources/contacts.js'
+import { InboxesResource } from './resources/inboxes.js'
+import { WebhooksResource } from './resources/webhooks.js'
 
 export interface PigeonsConfig {
   baseUrl: string
@@ -18,6 +20,8 @@ export class Pigeons {
   public readonly apiKeys: ApiKeysResource
   public readonly templates: TemplatesResource
   public readonly contacts: ContactsResource
+  public readonly inboxes: InboxesResource
+  public readonly webhooks: WebhooksResource
 
   constructor(config?: Partial<PigeonsConfig>) {
     const baseUrl = config?.baseUrl ?? process.env.PIGEONS_URL
@@ -42,5 +46,7 @@ export class Pigeons {
     this.apiKeys = new ApiKeysResource(this.http)
     this.templates = new TemplatesResource(this.http)
     this.contacts = new ContactsResource(this.http)
+    this.inboxes = new InboxesResource(this.http)
+    this.webhooks = new WebhooksResource(this.http)
   }
 }

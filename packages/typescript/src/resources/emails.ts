@@ -14,11 +14,11 @@ export class EmailsResource {
     if (options?.idempotencyKey) {
       headers['Idempotency-Key'] = options.idempotencyKey
     }
-    return this.http.post<Email>('/api/v1/emails', params, headers)
+    return this.http.post<Email>('/v1/emails', params, headers)
   }
 
   async get(id: string): Promise<Email> {
-    return this.http.get<Email>(`/api/v1/emails/${id}`)
+    return this.http.get<Email>(`/v1/emails/${id}`)
   }
 
   async list(params?: ListEmailsParams): Promise<PaginatedResponse<Email>> {
@@ -28,15 +28,15 @@ export class EmailsResource {
     if (params?.status) searchParams.set('status', params.status)
 
     const query = searchParams.toString()
-    const path = query ? `/api/v1/emails?${query}` : '/api/v1/emails'
+    const path = query ? `/v1/emails?${query}` : '/v1/emails'
     return this.http.get<PaginatedResponse<Email>>(path)
   }
 
   async cancel(id: string): Promise<Email> {
-    return this.http.post<Email>(`/api/v1/emails/${id}/cancel`, {})
+    return this.http.post<Email>(`/v1/emails/${id}/cancel`, {})
   }
 
   async batch(emails: SendEmailParams[]): Promise<Email[]> {
-    return this.http.post<Email[]>('/api/v1/emails/batch', emails)
+    return this.http.post<Email[]>('/v1/emails/batch', emails)
   }
 }

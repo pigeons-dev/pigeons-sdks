@@ -161,6 +161,144 @@ export interface ListContactsParams {
   tag?: string
 }
 
+export interface Inbox {
+  id: string
+  name: string
+  emailAddress: string
+  description?: string
+  webhookUrl?: string
+  metadata?: Record<string, unknown>
+  autoReplyEnabled: boolean
+  labels?: string[]
+  status: 'active' | 'paused' | 'archived'
+  catchAll: boolean
+  createdAt: string
+  updatedAt: string
+}
+
+export interface CreateInboxParams {
+  name: string
+  emailAddress?: string
+  description?: string
+  webhookUrl?: string
+  metadata?: Record<string, unknown>
+  autoReplyEnabled?: boolean
+  labels?: string[]
+}
+
+export interface UpdateInboxParams {
+  name?: string
+  description?: string
+  webhookUrl?: string
+  metadata?: Record<string, unknown>
+  autoReplyEnabled?: boolean
+  labels?: string[]
+}
+
+export interface ListInboxesParams {
+  cursor?: string
+  limit?: number
+  status?: Inbox['status']
+  labels?: string[]
+}
+
+export interface InboxMessage {
+  id: string
+  inboxId: string
+  direction: 'inbound' | 'outbound'
+  from: string
+  to: string[]
+  subject: string
+  html?: string
+  text?: string
+  extractedHtml?: string
+  extractedText?: string
+  threadId: string
+  inReplyTo?: string
+  labels?: string[]
+  attachments?: InboxMessageAttachment[]
+  sesMessageId?: string
+  createdAt: string
+}
+
+export interface InboxMessageAttachment {
+  filename: string
+  contentType: string
+  size: number
+  url: string
+}
+
+export interface SendInboxMessageParams {
+  to: string | string[]
+  subject?: string
+  html?: string
+  text?: string
+  inReplyTo?: string
+  labels?: string[]
+}
+
+export interface ListInboxMessagesParams {
+  cursor?: string
+  limit?: number
+  direction?: InboxMessage['direction']
+  threadId?: string
+  labels?: string[]
+}
+
+export interface Thread {
+  id: string
+  inboxId: string
+  subject: string
+  lastMessageAt: string
+  messageCount: number
+  participants: string[]
+  status: 'open' | 'closed' | 'snoozed'
+  metadata?: Record<string, unknown>
+  createdAt: string
+  updatedAt: string
+}
+
+export interface UpdateThreadParams {
+  status?: Thread['status']
+  metadata?: Record<string, unknown>
+}
+
+export interface ListThreadsParams {
+  cursor?: string
+  limit?: number
+  status?: Thread['status']
+}
+
+export interface Webhook {
+  id: string
+  url: string
+  events: string[]
+  secret?: string
+  status: 'active' | 'disabled'
+  failureCount: number
+  lastTriggeredAt?: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface CreateWebhookParams {
+  url: string
+  events: string[]
+  secret?: string
+}
+
+export interface UpdateWebhookParams {
+  url?: string
+  events?: string[]
+  secret?: string
+  status?: Webhook['status']
+}
+
+export interface ListWebhooksParams {
+  cursor?: string
+  limit?: number
+}
+
 export interface PaginatedResponse<T> {
   data: T[]
   has_more: boolean
