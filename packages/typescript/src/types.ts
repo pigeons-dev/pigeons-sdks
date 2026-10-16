@@ -21,9 +21,11 @@ export interface SendEmailParams {
   to: string | string[]
   cc?: string[]
   bcc?: string[]
-  subject: string
+  subject?: string
   html?: string
   text?: string
+  templateId?: string
+  data?: Record<string, unknown>
   tags?: string[]
   headers?: Record<string, string>
   scheduledAt?: string
@@ -80,6 +82,83 @@ export interface CreateApiKeyParams {
   name: string
   scopes?: string[]
   expiresAt?: string
+}
+
+export interface Template {
+  id: string
+  slug: string
+  name: string
+  subject: string
+  body: string
+  sampleData?: Record<string, unknown>
+  version: number
+  createdAt: string
+  updatedAt: string
+}
+
+export interface CreateTemplateParams {
+  slug: string
+  name: string
+  subject: string
+  body: string
+  sampleData?: Record<string, unknown>
+}
+
+export interface UpdateTemplateParams {
+  name?: string
+  subject?: string
+  body?: string
+  sampleData?: Record<string, unknown>
+}
+
+export interface TemplatePreview {
+  subject: string
+  html: string
+  text: string
+}
+
+export interface Contact {
+  id: string
+  email: string
+  firstName?: string
+  lastName?: string
+  tags?: string[]
+  properties?: Record<string, unknown>
+  unsubscribed: boolean
+  unsubscribedAt?: string
+  bounced: boolean
+  bouncedAt?: string
+  complained: boolean
+  complainedAt?: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface CreateContactParams {
+  email: string
+  firstName?: string
+  lastName?: string
+  tags?: string[]
+  properties?: Record<string, unknown>
+}
+
+export interface UpdateContactParams {
+  firstName?: string
+  lastName?: string
+  tags?: string[]
+  properties?: Record<string, unknown>
+}
+
+export interface BatchCreateContactsResult {
+  created: number
+  skipped: number
+  contacts: Array<{ id: string; email: string }>
+}
+
+export interface ListContactsParams {
+  cursor?: string
+  limit?: number
+  tag?: string
 }
 
 export interface PaginatedResponse<T> {
