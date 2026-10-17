@@ -10,6 +10,7 @@ export { WebhooksResource } from './resources/webhooks.js'
 export { CampaignsResource } from './resources/campaigns.js'
 export { SequencesResource } from './resources/sequences.js'
 export { TopicsResource } from './resources/topics.js'
+export { StatsResource } from './resources/stats.js'
 export type {
   Email,
   SendEmailParams,
@@ -59,5 +60,9 @@ export type {
   CreateTopicParams,
   UpdateTopicParams,
   ListTopicsParams,
+  PeriodStats,
+  WarmupGuidance,
+  DomainStats,
+  GlobalStats,
 } from './types.js'
 export { PigeonsError, ValidationError, AuthError, NotFoundError, RateLimitError } from './errors.js'

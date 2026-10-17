@@ -9,6 +9,7 @@ import { WebhooksResource } from './resources/webhooks.js'
 import { CampaignsResource } from './resources/campaigns.js'
 import { SequencesResource } from './resources/sequences.js'
 import { TopicsResource } from './resources/topics.js'
+import { StatsResource } from './resources/stats.js'
 
 export interface PigeonsConfig {
   baseUrl: string
@@ -28,6 +29,7 @@ export class Pigeons {
   public readonly campaigns: CampaignsResource
   public readonly sequences: SequencesResource
   public readonly topics: TopicsResource
+  public readonly stats: StatsResource
 
   constructor(config?: Partial<PigeonsConfig>) {
     const baseUrl = config?.baseUrl ?? process.env.PIGEONS_URL
@@ -57,5 +59,6 @@ export class Pigeons {
     this.campaigns = new CampaignsResource(this.http)
     this.sequences = new SequencesResource(this.http)
     this.topics = new TopicsResource(this.http)
+    this.stats = new StatsResource(this.http)
   }
 }

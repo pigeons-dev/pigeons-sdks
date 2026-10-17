@@ -449,6 +449,41 @@ export interface SequenceEnrollment {
   updatedAt: string
 }
 
+export interface PeriodStats {
+  sent: number
+  delivered: number
+  opened: number
+  bounced: number
+  complained: number
+  failed: number
+  deliveryRate: number
+  bounceRate: number
+  complaintRate: number
+  openRate: number
+}
+
+export interface WarmupGuidance {
+  phase: 'new' | 'warming' | 'established'
+  dailyLimit: number
+  recommendation: string
+}
+
+export interface DomainStats {
+  domainId: string
+  domain: string
+  last24h: PeriodStats
+  last7d: PeriodStats
+  last30d: PeriodStats
+  warmup: WarmupGuidance
+}
+
+export interface GlobalStats {
+  last24h: PeriodStats
+  last7d: PeriodStats
+  last30d: PeriodStats
+  topDomains: Array<{ domain: string; sent: number; deliveryRate: number }>
+}
+
 export interface PaginatedResponse<T> {
   data: T[]
   has_more: boolean

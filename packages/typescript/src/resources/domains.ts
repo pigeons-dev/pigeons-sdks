@@ -1,5 +1,5 @@
 import type { HttpClient } from '../http.js'
-import type { Domain, AddDomainParams, PaginatedResponse } from '../types.js'
+import type { Domain, AddDomainParams, DomainStats } from '../types.js'
 
 export class DomainsResource {
   constructor(private readonly http: HttpClient) {}
@@ -14,6 +14,10 @@ export class DomainsResource {
 
   async verify(id: string): Promise<Domain> {
     return this.http.get<Domain>(`/v1/domains/${id}/verify`)
+  }
+
+  async stats(id: string): Promise<DomainStats> {
+    return this.http.get<DomainStats>(`/v1/domains/${id}/stats`)
   }
 
   async delete(id: string): Promise<{ id: string; deleted: boolean }> {
