@@ -299,10 +299,34 @@ export interface ListWebhooksParams {
   limit?: number
 }
 
+export interface SubscriptionTopic {
+  id: string
+  name: string
+  description?: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface CreateTopicParams {
+  name: string
+  description?: string
+}
+
+export interface UpdateTopicParams {
+  name?: string
+  description?: string
+}
+
+export interface ListTopicsParams {
+  cursor?: string
+  limit?: number
+}
+
 export interface Campaign {
   id: string
   name: string
   subject?: string
+  topicId?: string
   templateId?: string
   templateData?: Record<string, unknown>
   fromName?: string
@@ -320,6 +344,7 @@ export interface Campaign {
 export interface CreateCampaignParams {
   name: string
   subject?: string
+  topicId?: string
   templateId?: string
   templateData?: Record<string, unknown>
   fromName?: string
@@ -331,6 +356,7 @@ export interface CreateCampaignParams {
 export interface UpdateCampaignParams {
   name?: string
   subject?: string
+  topicId?: string
   templateId?: string
   templateData?: Record<string, unknown>
   fromName?: string
@@ -361,6 +387,7 @@ export interface SequenceStep {
   sequenceId: string
   position: number
   type: 'email' | 'delay' | 'condition'
+  topicId?: string
   templateId?: string
   templateData?: Record<string, unknown>
   subject?: string
@@ -376,6 +403,7 @@ export interface CreateSequenceParams {
   trigger?: { event: string; filter?: Record<string, unknown> }
   steps?: Array<{
     type: 'email' | 'delay' | 'condition'
+    topicId?: string
     templateId?: string
     templateData?: Record<string, unknown>
     subject?: string
@@ -389,6 +417,7 @@ export interface UpdateSequenceParams {
   trigger?: { event: string; filter?: Record<string, unknown> }
   steps?: Array<{
     type: 'email' | 'delay' | 'condition'
+    topicId?: string
     templateId?: string
     templateData?: Record<string, unknown>
     subject?: string

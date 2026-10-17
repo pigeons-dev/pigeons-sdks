@@ -9,6 +9,7 @@ export { InboxesResource, InboxMessagesResource, InboxThreadsResource } from './
 export { WebhooksResource } from './resources/webhooks.js'
 export { CampaignsResource } from './resources/campaigns.js'
 export { SequencesResource } from './resources/sequences.js'
+export { TopicsResource } from './resources/topics.js'
 export type {
   Email,
   SendEmailParams,
@@ -54,5 +55,9 @@ export type {
   UpdateSequenceParams,
   ListSequencesParams,
   SequenceEnrollment,
+  SubscriptionTopic,
+  CreateTopicParams,
+  UpdateTopicParams,
+  ListTopicsParams,
 } from './types.js'
 export { PigeonsError, ValidationError, AuthError, NotFoundError, RateLimitError } from './errors.js'
