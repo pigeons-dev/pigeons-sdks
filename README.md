@@ -5,13 +5,13 @@ Official SDKs for [Pigeons](https://github.com/pigeons-dev/pigeons) — open-sou
 ## TypeScript SDK
 
 ```bash
-npm install @pigeons/sdk
+npm install @pigeons/pigeons-ts
 ```
 
 ### Setup
 
 ```typescript
-import { Pigeons } from '@pigeons/sdk'
+import { Pigeons } from '@pigeons/pigeons-ts'
 
 const pigeons = new Pigeons({
   baseUrl: 'https://mail.yourapp.com', // your self-hosted instance
@@ -75,7 +75,7 @@ await pigeons.apiKeys.revoke(key.id)
 ### Error handling
 
 ```typescript
-import { AuthError, RateLimitError, ValidationError } from '@pigeons/sdk'
+import { AuthError, RateLimitError, ValidationError } from '@pigeons/pigeons-ts'
 
 try {
   await pigeons.emails.send({ to: 'bad', subject: 'Test', html: '...' })
@@ -101,8 +101,8 @@ const email = await pigeons.emails.send(
 
 | Package | Description | Status |
 |---|---|---|
-| [`@pigeons/sdk`](packages/typescript) | TypeScript SDK | Available |
-| Python SDK | Python SDK | Planned |
+| [`@pigeons/pigeons-ts`](packages/typescript) | TypeScript SDK | Available |
+| [`pigeons-py`](packages/python) | Python SDK | Available |
 
 ## Development
 

@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pigeons-py"
+version = "0.1.0"
+description = "Python SDK for Pigeons email infrastructure"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Pigeons", email = "hello@pigeons.dev" }]
+keywords = ["email", "sdk", "pigeons", "ses", "transactional", "agent", "ai", "mcp"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Typing :: Typed",
+]
+dependencies = ["httpx>=0.27"]
+
+[project.urls]
+Homepage = "https://pigeons.dev"
+Repository = "https://github.com/pigeons-dev/pigeons-sdks"
+Documentation = "https://pigeons.dev/docs/sdks/python"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-httpx>=0.34", "ruff>=0.8"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pigeons"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120

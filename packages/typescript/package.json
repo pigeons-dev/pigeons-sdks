@@ -1,5 +1,5 @@
 {
-  "name": "@pigeons/sdk",
+  "name": "@pigeons/pigeons-ts",
   "version": "0.1.0",
   "description": "TypeScript SDK for Pigeons email infrastructure",
   "license": "MIT",
