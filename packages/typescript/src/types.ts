@@ -11,6 +11,10 @@ export interface Email {
   sesMessageId?: string
   tags?: string[]
   headers?: Record<string, string>
+  trackOpens?: boolean
+  openCount?: number
+  firstOpenedAt?: string
+  lastOpenedAt?: string
   scheduledAt?: string
   createdAt: string
   updatedAt: string
@@ -29,6 +33,7 @@ export interface SendEmailParams {
   tags?: string[]
   headers?: Record<string, string>
   scheduledAt?: string
+  trackOpens?: boolean
 }
 
 export interface ListEmailsParams {
@@ -336,7 +341,7 @@ export interface Campaign {
   scheduledAt?: string
   startedAt?: string
   completedAt?: string
-  stats: { total: number; sent: number; delivered: number; bounced: number; complained: number; failed: number }
+  stats: { total: number; sent: number; delivered: number; opened: number; bounced: number; complained: number; failed: number }
   createdAt: string
   updatedAt: string
 }
@@ -393,7 +398,7 @@ export interface SequenceStep {
   subject?: string
   delayDuration?: string
   condition?: Record<string, unknown>
-  stats: { sent: number; delivered: number; bounced: number; complained: number }
+  stats: { sent: number; delivered: number; opened: number; bounced: number; complained: number }
   createdAt: string
   updatedAt: string
 }
