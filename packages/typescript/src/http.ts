@@ -13,7 +13,7 @@ export class HttpClient {
       method,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.apiKey}`,
+        'x-api-key': this.apiKey,
         ...headers,
       },
       body: body ? JSON.stringify(body) : undefined,
