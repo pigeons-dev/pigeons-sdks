@@ -1,6 +1,6 @@
 # Pigeons Python SDK
 
-Python SDK for [Pigeons](https://pigeons.dev) — open-source, self-hosted email infrastructure for developers and AI agents.
+Python SDK for [Pigeons](https://pigeons.dev) - open source, self-hosted email infrastructure for developers and AI agents.
 
 ## Install
 
@@ -41,19 +41,19 @@ p = Pigeons()  # reads from env
 
 ## Resources
 
-- `p.emails` — send, get, list, cancel, batch
-- `p.domains` — add, list, verify, stats, delete
-- `p.api_keys` — create, list, revoke
-- `p.templates` — create, get, list, update, delete, preview
-- `p.contacts` — create, get, list, update, delete, batch, unsubscribe, resubscribe
-- `p.inboxes` — create, get, list, update, delete, pause, resume, set_catch_all
-  - `p.inboxes.messages` — list, get, create
-  - `p.inboxes.threads` — list, get, update
-- `p.webhooks` — create, get, list, update, delete
-- `p.campaigns` — create, get, list, update, send, cancel, pause, resume
-- `p.sequences` — create, get, list, update, activate, pause, enroll, enrollments
-- `p.topics` — create, get, list, update, delete
-- `p.stats` — get (global stats)
+- `p.emails` - send, get, list, cancel, batch
+- `p.domains` - add, list, verify, stats, delete
+- `p.api_keys` - create, list, revoke
+- `p.templates` - create, get, list, update, delete, preview
+- `p.contacts` - create, get, list, update, delete, batch, unsubscribe, resubscribe
+- `p.inboxes` - create, get, list, update, delete, pause, resume, set_catch_all
+  - `p.inboxes.messages` - list, get, create
+  - `p.inboxes.threads` - list, get, update
+- `p.webhooks` - create, get, list, update, delete
+- `p.campaigns` - create, get, list, update, send, cancel, pause, resume
+- `p.sequences` - create, get, list, update, activate, pause, enroll, enrollments
+- `p.topics` - create, get, list, update, delete
+- `p.stats` - get (global stats)
 
 ## License
 
